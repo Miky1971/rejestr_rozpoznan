@@ -1,0 +1,22 @@
+# moje
+ZADANIE_2.md
+git.log
+Kurs06*
+
+# Wyniki kompilacji .NET
+bin/
+obj/
+
+# Pliki uzytkownika/IDE (Visual Studio, Rider)
+*.user
+*.suo
+.vs/
+
+# Ustawienia lokalne VS Code (jesli kiedys powstana)
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# Pliki systemowe Windows/macOS
+Thumbs.db
+.DS_Store

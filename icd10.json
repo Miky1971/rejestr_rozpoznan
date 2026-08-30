@@ -1,0 +1,12 @@
+{
+  "canonicalUri": "https://example.org/icd10",
+  "codingSystem": "ICD-10",
+  "codes": [
+    { "code": "J45", "description": "Astma" },
+    { "code": "E11", "description": "Cukrzyca typu 2" },
+    { "code": "I10", "description": "Nadcisnienie samoistne (pierwotne)" },
+    { "code": "K21", "description": "Choroba refluksowa przelyku" },
+    { "code": "M54", "description": "Bol grzbietu" },
+    { "code": "Z00", "description": "Kod wycofany (testowy)", "retired": true }
+  ]
+}
