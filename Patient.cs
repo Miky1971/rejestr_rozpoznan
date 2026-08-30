@@ -1,5 +1,4 @@
-namespace Kurs.Models;
-
+namespace Kurs.Rejestr;
 public class Patient
 {
     public Guid Id { get; set; }
@@ -10,13 +9,16 @@ public class Patient
     public string Name => $"{this.FirstName} {this.LastName}";
 
     // Add other properties as needed
-    public Patient(DateTime birthDate, string firstName, string lastName)
+    public Patient(DateOnly birthDate, string firstName, string lastName)
     {
         this.Id = Guid.NewGuid();
         this.BirthDate = birthDate;
-        this.Age = (int)((DateTime.Now - this.BirthDate).Days / 365.25);
         this.FirstName = firstName;
         this.LastName = lastName;
+
+        var today = DateOnly.FromDateTime(DateTime.Now);
+        this.Age = today.Year - this.BirthDate.Year;
+        if (today < this.BirthDate.AddYears(this.Age)) this.Age--;
     }
 
     public override string ToString()

@@ -1,10 +1,11 @@
+namespace Kurs.Rejestr;
+
 public enum ClinicalStatus { active, cured, relapse }
 public enum ConfirmationStatus { suspected, confirmed }
 public enum SystemKind { sys_a, sys_b }
 public class Diagnosis
 {
     public Guid Id { get; set; }
-    public Guid Patient_Id { get; set; }
     public string CodingSystem { get; set; }
     public string Icd10Code { get; set; }
     public string Icd10Description { get; set; }
@@ -14,5 +15,7 @@ public class Diagnosis
     public ConfirmationStatus ConfirmationStatus { get; set; }
     public SystemKind SystemKind { get; set; }
 
-
+    // relacja do klasy Patient:
+    public Guid PatientId { get; set; }
+    public Patient Patient { get; set; }
 }

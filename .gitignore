@@ -1,4 +1,4 @@
-# moje
+# moje - NIE POKAZYWAC
 ZADANIE_2.md
 git.log
 Kurs06*
@@ -11,6 +11,11 @@ obj/
 *.user
 *.suo
 .vs/
+
+# db
+*.db
+*.db-shm
+*.db-wal
 
 # Ustawienia lokalne VS Code (jesli kiedys powstana)
 .vscode/*
