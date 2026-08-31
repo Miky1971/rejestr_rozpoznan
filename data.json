@@ -1,6 +1,6 @@
 [
   {
-    "systemKind": "SysA",
+    "externalSystemKind": "SysA",
 
     "externalSymbolPatient": "K-100",
     "pesel": null,
@@ -17,7 +17,7 @@
     "confirmationStatus": "Confirmed"
   },
   {
-    "systemKind": "SysA",
+    "externalSystemKind": "SysA",
 
     "externalSymbolPatient": "K-100",
     "pesel": null,
@@ -34,7 +34,7 @@
     "confirmationStatus": "Suspected"
   },
   {
-    "systemKind": "SysB",
+    "externalSystemKind": "SysB",
 
     "externalSymbolPatient": "K-100",
     "pesel": null,
@@ -51,7 +51,7 @@
     "confirmationStatus": "Confirmed"
   },
   {
-    "systemKind": "SysA",
+    "externalSystemKind": "SysA",
 
     "externalSymbolPatient": null,
     "pesel": "85010112345",
@@ -68,7 +68,7 @@
     "confirmationStatus": "Confirmed"
   },
   {
-    "systemKind": "SysB",
+    "externalSystemKind": "SysB",
 
     "externalSymbolPatient": "K-200",
     "pesel": null,
@@ -88,7 +88,7 @@
 
 
   {
-    "systemKind": "SysA",
+    "externalSystemKind": "SysA",
 
     "externalSymbolPatient": "K-100",
     "pesel": null,
@@ -105,7 +105,7 @@
     "confirmationStatus": "Confirmed"
   },
   {
-    "systemKind": "SysA",
+    "externalSystemKind": "SysA",
 
     "externalSymbolPatient": "K-100",
     "pesel": null,
@@ -122,7 +122,7 @@
     "confirmationStatus": "Confirmed"
   },
   {
-    "systemKind": "SysA",
+    "externalSystemKind": "SysA",
 
     "externalSymbolPatient": "K-100",
     "pesel": null,
@@ -139,7 +139,7 @@
     "confirmationStatus": "Confirmed"
   },
   {
-    "systemKind": "SysA",
+    "externalSystemKind": "SysA",
 
     "externalSymbolPatient": "K-100",
     "pesel": null,
@@ -156,7 +156,7 @@
     "confirmationStatus": "Confirmed"
   },
   {
-    "systemKind": "SysA",
+    "externalSystemKind": "SysA",
 
     "externalSymbolPatient": "K-100",
     "pesel": null,
@@ -173,7 +173,7 @@
     "confirmationStatus": "Confirmed"
   },
   {
-    "systemKind": "SysA",
+    "externalSystemKind": "SysA",
 
     "externalSymbolPatient": "K-100",
     "pesel": null,
@@ -193,7 +193,7 @@
 
 
   {
-    "systemKind": "SysA",
+    "externalSystemKind": "SysA",
 
     "externalSymbolPatient": "K-100",
     "pesel": null,

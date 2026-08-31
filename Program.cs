@@ -1,5 +1,5 @@
-
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Kurs.Rejestr;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +21,7 @@ if (!context.Patients.Any())
     context.SaveChanges();
     Console.WriteLine($"{++i}) Wstawianie uzytkowników do bazy");
 }
-Console.WriteLine($"{++i}) Uzytkownicy w bazie: {context.Patients.Count()}");
+else Console.WriteLine($"{++i}) Pacjęci w bazie: {context.Patients.Count()}");
 
 string temp = "";
 string file = "icd10.json";
@@ -30,11 +30,13 @@ JsonSerializerOptions options = new JsonSerializerOptions
 {
     PropertyNameCaseInsensitive = true
 };
+options.Converters.Add(new JsonStringEnumConverter());
+
 try
 {
     string json = File.ReadAllText(file);
     icdValueSet = JsonSerializer.Deserialize<IcdValueSet>(json, options);
-    temp = $"Odczyt pliku: {file}, Ilość kodów: {icdValueSet.Codes.Count}";
+    temp = $"Odczyt pliku: {file}, ilość kodów: {icdValueSet.Codes.Count}";
     ok = true;
 }
 catch (FileNotFoundException ex)
@@ -59,3 +61,56 @@ finally
     if (!ok) Environment.Exit(1);
 }
 
+
+file = "data.json";
+List<RegisterDiagnosisRequest> dataDiagnoses = null!;
+try
+{
+    string json = File.ReadAllText(file);
+    dataDiagnoses = JsonSerializer.Deserialize<List<RegisterDiagnosisRequest>>(json, options);
+    temp = $"Odczyt pliku: {file}, ilość kodów: {dataDiagnoses.Count}";
+    ok = true;
+}
+catch (FileNotFoundException ex)
+{
+    temp = $"Brak pliku: {file}.\n{ex.Message} ({ex.StackTrace})";
+    temp = $"Brak pliku: {file}.\n{ex.Message}";
+    ok = false;
+}
+catch (JsonException ex)
+{
+    temp = $"Odczyt pliku: {file}: błędny format JSON\n{ex.Message}";
+    ok = false;
+}
+catch (Exception ex)
+{
+    temp = $"Odczyt pliku: {file} nie udał się.\n{ex.Message}";
+    ok = false;
+}
+finally
+{
+    Console.WriteLine($"{++i}) {temp}");
+    if (!ok) Environment.Exit(1);
+}
+
+Console.WriteLine($"{++i}) Test danych wejściowych");
+foreach (var req in dataDiagnoses)
+{
+    var errors = Validator.Errors(req, icdValueSet, DateOnly.FromDateTime(DateTime.Now));
+    if (errors.Count == 0) temp = "OK";
+    else temp = string.Join(", ", errors);
+    Console.WriteLine(req.ExternalSymbolDiagnosis + " " + temp);
+}
+
+/*
+// od teraz aplikacja webowa:
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+// request: curl -X POST http://localhost:XXXX/diagnoses
+// responce:
+app.MapPost("/diagnoses", () => Results.Ok($"{++i}) POST działa, kod {StatusCodes.Status200OK}"));
+
+Console.WriteLine($"{++i}) Start serwera aplikacji:");
+app.Run();
+*/
