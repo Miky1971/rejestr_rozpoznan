@@ -16,10 +16,13 @@ namespace rejestr_rozpoznan.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    PESEL = table.Column<string>(type: "TEXT", nullable: false),
                     FirstName = table.Column<string>(type: "TEXT", nullable: false),
                     LastName = table.Column<string>(type: "TEXT", nullable: false),
                     BirthDate = table.Column<DateOnly>(type: "TEXT", nullable: false),
-                    Age = table.Column<int>(type: "INTEGER", nullable: false)
+                    Age = table.Column<int>(type: "INTEGER", nullable: false),
+                    ExternalSystemKind = table.Column<int>(type: "INTEGER", nullable: false),
+                    ExternalSymbolPatient = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,10 +38,12 @@ namespace rejestr_rozpoznan.Migrations
                     Icd10Code = table.Column<string>(type: "TEXT", nullable: false),
                     Icd10Description = table.Column<string>(type: "TEXT", nullable: false),
                     DateDiagnosis = table.Column<DateOnly>(type: "TEXT", nullable: false),
-                    AgeDiagnosis = table.Column<int>(type: "INTEGER", nullable: false),
+                    DateOnset = table.Column<DateOnly>(type: "TEXT", nullable: true),
+                    AgeOnset = table.Column<int>(type: "INTEGER", nullable: true),
                     ClinicalStatus = table.Column<int>(type: "INTEGER", nullable: false),
                     ConfirmationStatus = table.Column<int>(type: "INTEGER", nullable: false),
-                    SystemKind = table.Column<int>(type: "INTEGER", nullable: false),
+                    ExternalSystemKind = table.Column<int>(type: "INTEGER", nullable: false),
+                    ExternalSymbolDiagnosis = table.Column<string>(type: "TEXT", nullable: false),
                     PatientId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>

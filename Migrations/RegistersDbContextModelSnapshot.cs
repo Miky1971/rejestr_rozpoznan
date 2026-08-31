@@ -23,7 +23,7 @@ namespace rejestr_rozpoznan.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("AgeDiagnosis")
+                    b.Property<int?>("AgeOnset")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ClinicalStatus")
@@ -39,6 +39,16 @@ namespace rejestr_rozpoznan.Migrations
                     b.Property<DateOnly>("DateDiagnosis")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateOnly?>("DateOnset")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ExternalSymbolDiagnosis")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ExternalSystemKind")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Icd10Code")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -49,9 +59,6 @@ namespace rejestr_rozpoznan.Migrations
 
                     b.Property<Guid>("PatientId")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("SystemKind")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -72,11 +79,22 @@ namespace rejestr_rozpoznan.Migrations
                     b.Property<DateOnly>("BirthDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("ExternalSymbolPatient")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ExternalSystemKind")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PESEL")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
