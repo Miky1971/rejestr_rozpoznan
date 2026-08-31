@@ -1,15 +1,16 @@
 namespace Kurs.Rejestr;
+
 public class Patient
 {
     public Guid Id { get; set; }
-    public string PESEL { get; set; }
+    public string? PESEL { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public DateOnly BirthDate { get; set; }
     public int Age { get; set; }
     public string Name => $"{this.FirstName} {this.LastName}";
     public ExternalSystemKind ExternalSystemKind { get; set; }
-    public string ExternalSymbolPatient { get; set; }
+    public string? ExternalSymbolPatient { get; set; }
 
     // Add other properties as needed
     public Patient(DateOnly birthDate, string firstName, string lastName)

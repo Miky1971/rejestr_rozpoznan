@@ -80,7 +80,6 @@ namespace rejestr_rozpoznan.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ExternalSymbolPatient")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ExternalSystemKind")
@@ -95,7 +94,6 @@ namespace rejestr_rozpoznan.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PESEL")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

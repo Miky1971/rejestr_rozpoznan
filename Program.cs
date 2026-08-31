@@ -1,3 +1,4 @@
+
 using System.Text.Json;
 using Kurs.Rejestr;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,18 @@ Console.WriteLine($"{i}) Build: {ok}");
 var context = new RegistersDbContext();
 context.Database.Migrate();
 Console.WriteLine($"{++i}) Migracja BD Registers: {ok}");
+
+if (!context.Patients.Any())
+{
+    Patient p1 = new Patient(new DateOnly(1970, 5, 12), "Jan", "Kowalski") { ExternalSystemKind = ExternalSystemKind.SysA, ExternalSymbolPatient = "K-100", PESEL = null };
+    Patient p2 = new Patient(new DateOnly(1982, 11, 3), "Anna", "Nowak") { ExternalSystemKind = ExternalSystemKind.SysB, ExternalSymbolPatient = "K-100", PESEL = null };
+    Patient p3 = new Patient(new DateOnly(1995, 7, 20), "Piotr", "Wiśniewski") { ExternalSystemKind = ExternalSystemKind.SysB, ExternalSymbolPatient = "K-200", PESEL = null };
+    Patient p4 = new Patient(new DateOnly(1985, 1, 1), "Katarzyna", "Zielińska") { ExternalSystemKind = ExternalSystemKind.SysA, ExternalSymbolPatient = null, PESEL = "85010112345" };
+    context.Patients.AddRange(p1, p2, p3, p4);
+    context.SaveChanges();
+    Console.WriteLine($"{++i}) Wstawianie uzytkowników do bazy");
+}
+Console.WriteLine($"{++i}) Uzytkownicy w bazie: {context.Patients.Count()}");
 
 string temp = "";
 string file = "icd10.json";

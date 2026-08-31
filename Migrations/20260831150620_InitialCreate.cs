@@ -16,13 +16,13 @@ namespace rejestr_rozpoznan.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    PESEL = table.Column<string>(type: "TEXT", nullable: false),
+                    PESEL = table.Column<string>(type: "TEXT", nullable: true),
                     FirstName = table.Column<string>(type: "TEXT", nullable: false),
                     LastName = table.Column<string>(type: "TEXT", nullable: false),
                     BirthDate = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     Age = table.Column<int>(type: "INTEGER", nullable: false),
                     ExternalSystemKind = table.Column<int>(type: "INTEGER", nullable: false),
-                    ExternalSymbolPatient = table.Column<string>(type: "TEXT", nullable: false)
+                    ExternalSymbolPatient = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

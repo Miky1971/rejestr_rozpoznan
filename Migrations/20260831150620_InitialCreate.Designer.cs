@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace rejestr_rozpoznan.Migrations
 {
     [DbContext(typeof(RegistersDbContext))]
-    [Migration("20260831111802_InitialCreate")]
+    [Migration("20260831150620_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -83,7 +83,6 @@ namespace rejestr_rozpoznan.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ExternalSymbolPatient")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ExternalSystemKind")
@@ -98,7 +97,6 @@ namespace rejestr_rozpoznan.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PESEL")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
