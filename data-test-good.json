@@ -1,0 +1,14 @@
+{
+    "externalSystemKind": "SysB",
+    "externalSymbolPatient": "K-200",
+    "pesel": null,
+    "externalSymbolDiagnosis": "REC-TEST-GOOD-2",
+    "dateDiagnosis": "2026-08-15",
+    "dateOnset": null,
+    "ageOnset": 20,
+    "icd10Code": "E11",
+    "codingSystem": "ICD-10",
+    "icd10Description": "cokolwiek",
+    "clinicalStatus": "Active",
+    "confirmationStatus": "Confirmed"
+}

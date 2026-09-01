@@ -1,0 +1,14 @@
+{
+    "externalSystemKind": "SysA",
+    "externalSymbolPatient": "K-100",
+    "pesel": null,
+    "externalSymbolDiagnosis": "REC-TEST-002",
+    "dateDiagnosis": "2030-01-01",
+    "dateOnset": null,
+    "ageOnset": 40,
+    "icd10Code": "XYZ99",
+    "codingSystem": "ICD-10",
+    "icd10Description": "cokolwiek",
+    "clinicalStatus": "Active",
+    "confirmationStatus": "Confirmed"
+}

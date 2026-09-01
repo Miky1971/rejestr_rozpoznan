@@ -189,6 +189,40 @@
     "clinicalStatus": "Active",
     "confirmationStatus": "Confirmed"
   },
+  {
+    "externalSystemKind": "SysA",
+
+    "externalSymbolPatient": null,
+    "pesel": "99999999999",
+
+    "externalSymbolDiagnosis": "REC-A-012",
+    "dateDiagnosis": "2026-08-15",
+    "dateOnset": null,
+    "ageOnset": 40,
+
+    "icd10Code": "J45",
+    "codingSystem": "ICD-10",
+    "icd10Description": "cokolwiek, i tak zignorowane",
+    "clinicalStatus": "Active",
+    "confirmationStatus": "Confirmed"
+  },
+  {
+    "externalSystemKind": "SysA",
+
+    "externalSymbolPatient": "K-999",
+    "pesel": null,
+
+    "externalSymbolDiagnosis": "REC-A-013",
+    "dateDiagnosis": "2026-08-15",
+    "dateOnset": null,
+    "ageOnset": 40,
+
+    "icd10Code": "J45",
+    "codingSystem": "ICD-10",
+    "icd10Description": "cokolwiek, i tak zignorowane",
+    "clinicalStatus": "Active",
+    "confirmationStatus": "Confirmed"
+  },
 
 
 
@@ -205,6 +239,43 @@
 
     "icd10Code": "J45",
     "codingSystem": "ICD-10",
+    "icd10Description": "cokolwiek, i tak zignorowane",
+    "clinicalStatus": "Active",
+    "confirmationStatus": "Confirmed"
+  },
+
+
+
+  {
+    "externalSystemKind": "SysA",
+
+    "externalSymbolPatient": "K-100",
+    "pesel": null,
+
+    "externalSymbolDiagnosis": "REC-A-010",
+    "dateDiagnosis": "2030-01-01",
+    "dateOnset": null,
+    "ageOnset": 40,
+
+    "icd10Code": "XYZ99",
+    "codingSystem": "ICD-10",
+    "icd10Description": "cokolwiek, i tak zignorowane",
+    "clinicalStatus": "Active",
+    "confirmationStatus": "Confirmed"
+  },
+  {
+    "externalSystemKind": "SysA",
+
+    "externalSymbolPatient": "K-100",
+    "pesel": null,
+
+    "externalSymbolDiagnosis": "REC-A-011",
+    "dateDiagnosis": "2030-01-01",
+    "dateOnset": "2020-01-01",
+    "ageOnset": 40,
+
+    "icd10Code": "XYZ99",
+    "codingSystem": "ABC-123",
     "icd10Description": "cokolwiek, i tak zignorowane",
     "clinicalStatus": "Active",
     "confirmationStatus": "Confirmed"

@@ -34,17 +34,18 @@ namespace rejestr_rozpoznan.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CodingSystem = table.Column<string>(type: "TEXT", nullable: false),
-                    Icd10Code = table.Column<string>(type: "TEXT", nullable: false),
-                    Icd10Description = table.Column<string>(type: "TEXT", nullable: false),
+                    ExternalSystemKind = table.Column<int>(type: "INTEGER", nullable: false),
+                    PatientId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ExternalSymbolDiagnosis = table.Column<string>(type: "TEXT", nullable: false),
                     DateDiagnosis = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     DateOnset = table.Column<DateOnly>(type: "TEXT", nullable: true),
                     AgeOnset = table.Column<int>(type: "INTEGER", nullable: true),
+                    Icd10Code = table.Column<string>(type: "TEXT", nullable: false),
+                    CodingSystem = table.Column<string>(type: "TEXT", nullable: false),
+                    Icd10Description = table.Column<string>(type: "TEXT", nullable: false),
                     ClinicalStatus = table.Column<int>(type: "INTEGER", nullable: false),
                     ConfirmationStatus = table.Column<int>(type: "INTEGER", nullable: false),
-                    ExternalSystemKind = table.Column<int>(type: "INTEGER", nullable: false),
-                    ExternalSymbolDiagnosis = table.Column<string>(type: "TEXT", nullable: false),
-                    PatientId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    ReportStatus = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

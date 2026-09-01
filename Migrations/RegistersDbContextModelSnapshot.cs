@@ -60,6 +60,9 @@ namespace rejestr_rozpoznan.Migrations
                     b.Property<Guid>("PatientId")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("ReportStatus")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PatientId");

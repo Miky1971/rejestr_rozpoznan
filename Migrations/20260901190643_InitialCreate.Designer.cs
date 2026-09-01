@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace rejestr_rozpoznan.Migrations
 {
     [DbContext(typeof(RegistersDbContext))]
-    [Migration("20260831150620_InitialCreate")]
+    [Migration("20260901190643_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -62,6 +62,9 @@ namespace rejestr_rozpoznan.Migrations
 
                     b.Property<Guid>("PatientId")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("ReportStatus")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 

@@ -2,7 +2,7 @@ namespace Kurs.Rejestr;
 
 public record RegisterDiagnosisRequest
 {
-    public ExternalSystemKind SystemKind { get; init; }
+    public ExternalSystemKind ExternalSystemKind { get; init; }
     public string? ExternalSymbolPatient { get; init; }
     public string? PESEL { get; init; }
 
