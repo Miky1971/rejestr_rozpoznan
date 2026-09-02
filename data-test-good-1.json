@@ -1,0 +1,14 @@
+{
+    "externalSystemKind": "SysA",
+    "externalSymbolPatient": "K-100",
+    "pesel": null,
+    "externalSymbolDiagnosis": "REC-TEST-GOOD-3",
+    "dateDiagnosis": "2026-08-15",
+    "dateOnset": null,
+    "ageOnset": 45,
+    "icd10Code": "M54",
+    "codingSystem": "ICD-10",
+    "icd10Description": "cokolwiek",
+    "clinicalStatus": "Active",
+    "confirmationStatus": "Confirmed"
+}

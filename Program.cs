@@ -19,8 +19,17 @@ DataTest.Run(context, icdValueSet, options);
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.Converters.Add(new JsonStringEnumConverter())); // enumy jako tekst w JSON-ie wymagają specjalnej konfiguracji).
 var app = builder.Build();
+string baseUrl = app.Urls.FirstOrDefault() ?? "http://localhost:5000"; // przechwytywanie nr portu, żeby w zapytaniach POST nie był na sztywno
 
-MapPostDiagnosisEndpoints.Run(context, icdValueSet, app);
+DiagnosisRegistration.Run(context, icdValueSet, app, baseUrl);
+ExternalRegistry.Run(app);
+
+
+
+
+
+
+
 
 Console.WriteLine($"Start serwera aplikacji:");
 app.Run(); // uruchamiana na 1. terminalu
