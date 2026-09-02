@@ -8,7 +8,6 @@ public static class DataTest
 
     public static void Run(RegistersDbContext context, IcdValueSet icdValueSet, JsonSerializerOptions options)
     {
-        int i = 0;
         bool ok = false;
         string temp = "";
         string file = "data.json";
@@ -37,11 +36,11 @@ public static class DataTest
         }
         finally
         {
-            Console.WriteLine($"Dt{++i}) {temp}");
+            Console.WriteLine($"DataTest.Run: {temp}");
             if (!ok) Environment.Exit(1);
         }
 
-        Console.WriteLine($"Dt{++i}) Test danych wejściowych/rozpoznań z 'dataDiagnoses':");
+        Console.WriteLine($"DataTest.Run: Test danych wejściowych/rozpoznań z 'dataDiagnoses':");
         foreach (var req in dataDiagnoses)
         {
             var errors = Validator.Errors(req, icdValueSet, DateOnly.FromDateTime(DateTime.Now), context.Patients);
