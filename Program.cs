@@ -1,10 +1,12 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Kurs.Rejestr;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 Console.WriteLine($"START");
-RegistersDbContext context = DataBase.Run();
+const string dbConnectionString = "Data Source=registers.db";
+RegistersDbContext context = DataBase.Run(dbConnectionString); // Tabele BD i połaczenie do niej
 
 JsonSerializerOptions options = new JsonSerializerOptions
 {
@@ -13,7 +15,7 @@ JsonSerializerOptions options = new JsonSerializerOptions
 options.Converters.Add(new JsonStringEnumConverter());
 IcdValueSet icdValueSet = SicknessCodes.Download("data/icd10.json", options);
 
-DataTest.Run(context, icdValueSet, options);
+DataTest.Run(context, icdValueSet, options); // wczytanie danych testowych z data/data.json
 
 // odtąd budowanie aplikacji webowej 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,27 +23,27 @@ builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.C
 var app = builder.Build();
 string baseUrl = app.Urls.FirstOrDefault() ?? "http://localhost:5000"; // przechwytywanie nr portu, żeby w zapytaniach POST nie był na sztywno
 
+// zapytania POST i GET:
 DiagnosisRegistration.Run(context, icdValueSet, app, baseUrl);
 ExternalRegistry.Run(app);
 PatientReports.PatientSearch(context, app);
 PatientReports.PatientDiagnoses(context, app);
 
-
-
-
-
-
+using var connectionDB = new SqliteConnection(dbConnectionString); // drugie połaczenie do DB (dla Dapper'a)
+PatientReports.SummaryIcd10Code(connectionDB, app);
 
 
 Console.WriteLine($"Start serwera aplikacji:");
 app.Run(); // uruchamiana na 1. terminalu
 
+
+
 static class DataBase
 {
-    public static RegistersDbContext Run()
+    public static RegistersDbContext Run(string dbConnectionString)
     {
         const string temp = "DataBase.Run:";
-        var context = new RegistersDbContext();
+        var context = new RegistersDbContext(dbConnectionString);
         context.Database.Migrate();
         Console.WriteLine($"{temp} Migracja BD Registers");
 

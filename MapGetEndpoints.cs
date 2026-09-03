@@ -1,5 +1,8 @@
 using System.Text.RegularExpressions;
 using System;
+using Dapper;
+using Microsoft.Data.Sqlite;
+
 namespace Kurs.Rejestr;
 
 public static class PatientReports
@@ -30,4 +33,16 @@ public static class PatientReports
             else return Results.Ok(diagnoses);
         });
     }
+
+    public static void SummaryIcd10Code(SqliteConnection connectionDB, WebApplication app)
+    {
+        app.MapGet("/summary", () =>
+        {
+            var summary = connectionDB.Query<Icd10Summary>("SELECT Icd10Code, COUNT(*) count FROM Diagnoses GROUP BY Icd10Code ORDER BY COUNT(*) DESC");
+            if (summary.Count() == 0) return Results.NotFound();
+            else return Results.Ok(summary);
+        });
+    }
 }
+
+public record Icd10Summary(string Icd10Code, long Count);

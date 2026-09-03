@@ -86,3 +86,7 @@ Status, którego Piotr NIE ma (status=Cured) → 404 (brak danych):
 curl -s -i "http://localhost:5000/patient/76299a30-b0a8-474d-a771-dd2bcb5e8ea8/diagnoses?status=Cured"
 brak danych = 404 (w obu przypadkach, z powodu braku pacjenta lub braku wyników z takim statusem)
 
+## 5. Policz liczbę rozpoznań w podziale na kod ICD-10, malejąco:
+curl -s -i "http://localhost:5000/summary"
+[{"icd10Code":"M54","count":1},{"icd10Code":"K21","count":1},{"icd10Code":"J45","count":1},{"icd10Code":"I10","count":1},{"icd10Code":"E11","count":1}]
+
