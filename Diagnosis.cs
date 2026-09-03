@@ -13,14 +13,14 @@ public class Diagnosis
     public Guid PatientId { get; set; }
     public Patient Patient { get; set; }
 
-    public string ExternalSymbolDiagnosis { get; set; }
+    public required string ExternalSymbolDiagnosis { get; set; }
     public DateOnly DateDiagnosis { get; set; }
     public DateOnly? DateOnset { get; set; }
     public int? AgeOnset { get; set; }
 
-    public string Icd10Code { get; set; }
-    public string CodingSystem { get; set; }
-    public string Icd10Description { get; set; }
+    public required string Icd10Code { get; set; }
+    public required string CodingSystem { get; set; }
+    public required string Icd10Description { get; set; }
     public ClinicalStatus ClinicalStatus { get; set; }
     public ConfirmationStatus ConfirmationStatus { get; set; }
 

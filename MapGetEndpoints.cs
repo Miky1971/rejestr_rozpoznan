@@ -7,8 +7,6 @@ namespace Kurs.Rejestr;
 
 public static class PatientReports
 {
-    private static readonly HttpClient httpClient = new HttpClient();
-    private static string baseUrl = "";
     public static void PatientSearch(RegistersDbContext context, WebApplication app)
     {
         app.MapGet("/patient", (string? pesel, string? symbol, ExternalSystemKind? system) =>

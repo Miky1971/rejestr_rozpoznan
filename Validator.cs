@@ -26,6 +26,6 @@ public static class Validator
     public static Patient? FindPatient(RegisterDiagnosisRequest request, DbSet<Patient> patients)
     {
         return patients.FirstOrDefault(p => ((p.PESEL != null && request.PESEL != null && p.PESEL == request.PESEL) ||
-            (p.ExternalSystemKind != null && p.ExternalSymbolPatient != null && request.ExternalSystemKind != null && request.ExternalSymbolPatient != null && p.ExternalSystemKind == request.ExternalSystemKind && p.ExternalSymbolPatient == request.ExternalSymbolPatient)));
+            (p.ExternalSymbolPatient != null && request.ExternalSymbolPatient != null && p.ExternalSystemKind == request.ExternalSystemKind && p.ExternalSymbolPatient == request.ExternalSymbolPatient)));
     }
 }
