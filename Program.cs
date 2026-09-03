@@ -11,7 +11,7 @@ JsonSerializerOptions options = new JsonSerializerOptions
     PropertyNameCaseInsensitive = true
 };
 options.Converters.Add(new JsonStringEnumConverter());
-IcdValueSet icdValueSet = SicknessCodes.Download("icd10.json", options);
+IcdValueSet icdValueSet = SicknessCodes.Download("data/icd10.json", options);
 
 DataTest.Run(context, icdValueSet, options);
 
@@ -23,6 +23,8 @@ string baseUrl = app.Urls.FirstOrDefault() ?? "http://localhost:5000"; // przech
 
 DiagnosisRegistration.Run(context, icdValueSet, app, baseUrl);
 ExternalRegistry.Run(app);
+PatientReports.PatientSearch(context, app);
+PatientReports.PatientDiagnoses(context, app);
 
 
 

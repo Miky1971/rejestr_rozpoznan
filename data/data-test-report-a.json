@@ -1,0 +1,14 @@
+{
+    "externalSystemKind": "SysB",
+    "externalSymbolPatient": "K-100",
+    "pesel": null,
+    "externalSymbolDiagnosis": "REC-REPORT-A",
+    "dateDiagnosis": "2026-08-15",
+    "dateOnset": null,
+    "ageOnset": 30,
+    "icd10Code": "K21",
+    "codingSystem": "ICD-10",
+    "icd10Description": "cokolwiek",
+    "clinicalStatus": "Active",
+    "confirmationStatus": "Confirmed"
+}

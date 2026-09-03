@@ -10,7 +10,7 @@ public static class DataTest
     {
         bool ok = false;
         string temp = "";
-        string file = "data.json";
+        string file = "data/data.json";
         List<RegisterDiagnosisRequest> dataDiagnoses = null!;
         try
         {
