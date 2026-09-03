@@ -23,14 +23,16 @@ builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.C
 var app = builder.Build();
 string baseUrl = app.Urls.FirstOrDefault() ?? "http://localhost:5000"; // przechwytywanie nr portu, żeby w zapytaniach POST nie był na sztywno
 
-// zapytania POST i GET:
+// zapytania POST:
 DiagnosisRegistration.Run(context, icdValueSet, app, baseUrl);
 ExternalRegistry.Run(app);
+// zapytania GET:
 PatientReports.PatientSearch(context, app);
 PatientReports.PatientDiagnoses(context, app);
-
 using var connectionDB = new SqliteConnection(dbConnectionString); // drugie połaczenie do DB (dla Dapper'a)
 PatientReports.SummaryIcd10Code(connectionDB, app);
+// zapytania PATCH:
+DiagnosisUpdate.StatusChange(context, app);
 
 
 Console.WriteLine($"Start serwera aplikacji:");

@@ -9,11 +9,6 @@ public static class Validator
     {
         List<string> errors = new();
 
-        /*
-        (!patients.Any(p => ((p.PESEL != null && request.PESEL != null && p.PESEL == request.PESEL) ||
-            (p.ExternalSystemKind != null && p.ExternalSymbolPatient != null && request.ExternalSystemKind != null && request.ExternalSymbolPatient != null && p.ExternalSystemKind == request.ExternalSystemKind && p.ExternalSymbolPatient == request.ExternalSymbolPatient))
-            )) 
-        */
         if (FindPatient(request, patients) == null) errors.Add($"Brak pacjenta z nr: {request.ExternalSymbolPatient}, z sytemu {request.ExternalSystemKind} lub z PESEL: {request.PESEL}");
         if (request.DateDiagnosis > date) errors.Add($"Data diagnozy nie może być z przyszłości: {request.DateDiagnosis}");
         if (codes.FindActiveDisease(request.Icd10Code) == null) errors.Add($"Kod Icd10: {request.Icd10Code}, błędny lub nieaktywny");
