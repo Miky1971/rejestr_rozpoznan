@@ -7,10 +7,10 @@ Trzy reguły walidacji przy rejestracji rozpoznania (sekcja "Rejestracja rozpozn
 - opisu słownego — zadanie nie wymaga tworzenia nowego pacjenta jako część tej operacji.
 
 # Validator — osobna klasa do walidacji:
-## public static List<string> Errors(RegisterDiagnosisRequest request, IcdValueSet codes, DateOnly date, DbSet<Patient> patients)
+### public static List<string> Errors(RegisterDiagnosisRequest request, IcdValueSet codes, DateOnly date, DbSet<Patient> patients)
 metoda sprawdzająca cztery reguły naraz (data, kod+system, dokładnie jedno z dwóch pól początku), zwracająca listę błędów
 
-## public static Patient? FindPatient(RegisterDiagnosisRequest request, DbSet<Patient> patients)
+### public static Patient? FindPatient(RegisterDiagnosisRequest request, DbSet<Patient> patients)
 wyszukanie pacjenta — po PESEL albo (ExternalSymbolPatient+ExternalSystemKind) w context.Patients.
 
 # public static bool IsDuplicate(RegisterDiagnosisRequest request, DbSet<Diagnosis> diagnosis)
@@ -32,10 +32,10 @@ kilka naruszeń naraz:
 12. i z 4 naraz (data + kod + system + oba pola początku)
 
 
-## Błedy które jeszcze można by kiedyś testować (na razie odłożone)
+### Błędy które jeszcze można by kiedyś testować (na razie odłożone)
 - brak externalSystemKind albo inny, nieobsługiwany
 
-## testowanie
+### testowanie
 Dwa pliki gotowe do testów z osobnych plików:
     curl -i -X POST http://localhost:5000/diagnoses -H "Content-Type: application/json" -d @data/data-test-good.json
     curl -i -X POST http://localhost:5000/diagnoses -H "Content-Type: application/json" -d @data/data-test-bad.json
@@ -82,14 +82,14 @@ curl -i -X POST http://localhost:5000/diagnoses -H "Content-Type: application/js
 // zapytania POST "/diagnoses", async (RegisterDiagnosisRequest req)
 DiagnosisRegistration.Run(context, icdValueSet, app, baseUrl);
 
-## ... i wysłanie raportu o nowo zarejestrowanym rozpoznaniu do atrapy zewnętrznego endpoitu 
-## zawsze 3 próby: Pierwsze dwie próby odrzuca kodem 503, kolejne 202. 
-## Zgłoszenie bez identyfikatora rozpoznania albo bez kodu odrzuca kodem 400.
+### ... i wysłanie raportu o nowo zarejestrowanym rozpoznaniu do atrapy zewnętrznego endpoitu 
+### zawsze 3 próby: Pierwsze dwie próby odrzuca kodem 503, kolejne 202. 
+### Zgłoszenie bez identyfikatora rozpoznania albo bez kodu odrzuca kodem 400.
 // zapytania POST "/external-report", (ExternalReport externalReport)
 ExternalRegistry.Run(app);
 
 # Odczyt danych z bazy SQLite: 
-## wyszukiwanie pacjenta po numerze PESEL albo po numerze kartoteki: 
+### wyszukiwanie pacjenta po numerze PESEL albo po numerze kartoteki: 
 // zapytania GET /patient (string? pesel, string? symbol, ExternalSystemKind? system)
 PatientReports.PatientSearch(context, app);
 
@@ -105,7 +105,7 @@ curl -s -i "http://localhost:5000/patient?symbol=K-100&system=SysB"
 Nieistniejący PESEL → 404:
 curl -s -i "http://localhost:5000/patient?pesel=00000000000"
 
-## odczyt rozpoznań wskazanego pacjenta (z filtrem po statusie klinicznym, sortowaniem po dacie postawienia i stronicowana): 
+### odczyt rozpoznań wskazanego pacjenta (z filtrem po statusie klinicznym, sortowaniem po dacie postawienia i stronicowana): 
 // zapytania GET /patient/{patientId}/diagnoses (Guid patientId, ClinicalStatus? status, int page = 1, int pageSize = 20)
 PatientReports.PatientDiagnoses(context, app);
 
